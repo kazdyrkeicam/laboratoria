@@ -1,0 +1,26 @@
+/*Napisz funkcjê w jêzyku C, która przyjmuje w argumencie liczbê ca³kowit¹ oraz wskaŸnik na bool.
+Funkcja powinna sprawdziæ, za pomoc¹ operacji bitowych, czy cyfry przekazanej liczby ca³kowitej s¹ parzyste.
+Ponadto funkcja powinna ustawiæ przekazany wskaŸnik na bool na wartoœæ true,
+jeœli wszystkie cyfry s¹ parzyste i false w przeciwnym wypadku./**/
+
+#include <stdio.h>
+#include <stdbool.h>
+
+void *f(int number, bool *result){
+    while(number){
+        if(number % 10 & 1){
+            *result = false;
+            return;
+        }
+        number /= 10;
+    }
+    *result = true;
+}
+
+int main()
+{
+    bool a;
+    f(22222, &a);
+    printf("%d\n", a);
+    return 0;
+}
