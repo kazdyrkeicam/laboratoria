@@ -1,0 +1,17 @@
+/*Napisz funkcjê w jêzyku C, która przyjmuje jako argumenty wskaŸniki do trzech zmiennych typu int.
+Funkcja powinna do trzeciego argumentu zapisaæ sumê wartoœci z liczb wskazywanych przez dwa poprzednie argumenty.
+Napisz program, który przetestuje dzia³anie tej funkcji./**/
+
+#include <stdio.h>
+
+void f(int *a, int *b, int *result){
+	*result = *a + *b;
+}
+
+int main(){
+	int result, a = 5, b = 6;
+
+	f(&a, &b, &result);
+	printf("%d\n", result);
+	return 0;
+}

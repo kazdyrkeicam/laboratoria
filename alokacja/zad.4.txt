@@ -1,0 +1,39 @@
+Napisz program w jêzyku C, który stworzy dwuwymiarow¹ tablicê(NxM) w postaci tablicy wskaŸników do tablicy wartoœci liczb ca³kowitych.
+Napisz funkcjê f1, która wype³ni t¹ tablicê dowolnymi wartoœciami, a nastêpnie funkcjê f2, która wyœwietli wartoœci z tej tablicy.
+
+#include <stdio.h>
+#include <stdlib.h>
+
+
+void f1(int **arr, int n, int m){
+	for(int i = 0; i < n; ++i){
+		for(int j = 0; j < m; ++j)
+			arr[i][j] = i * j;
+	}
+}
+
+void f2(int **arr, int n, int m){
+	for(int i = 0; i < n; ++i){
+		for(int j = 0; j < m; ++j)
+			printf("%d\n", arr[i][j]);
+	}
+}
+
+
+int main(){
+	int n, m;
+	scanf("%d%d", &n, &m);
+
+	int **arr = malloc(sizeof(*arr) * n);
+	
+	for(int i = 0; i < n; ++i)
+		arr[i] = malloc(sizeof(int) * m);
+
+	f1(arr, n, m);
+	f2(arr, n, m);
+
+	for(int i = 0; i < n; ++i)
+		free(arr[i]);
+	free(arr);
+	return 0;
+}

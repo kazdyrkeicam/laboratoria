@@ -1,0 +1,39 @@
+Napisz funkcjê w jêzyku C, która przyjmie jako argumenty tablicê wartoœci zmiennoprzecinkowych, jej rozmiar,
+dwie wartoœci zmiennoprzecinkowe - minimum i maksimum,
+oraz wskaŸnik na uprzednio zaalokowan¹ wartoœæ ca³kowit¹. 
+Funkcja powinna zaalokowaæ i zwróciæ tablicê,
+w której znajd¹ siê liczby z lewostronnie domkniêtego przedzia³u od minimum do maksimum.
+Pod wartoœci¹ wskaŸnika z argumentu nale¿y zapisaæ rozmiar nowo utworzonej tablicy.
+
+#include <stdio.h>
+#include <stdlib.h>
+
+float *insert(float *arr, int n, float min, float max, int *size){
+	*size = 0;
+	
+	for(int i = 0; i < n; ++i)
+		if(arr[i] >= min && arr[i] <= max)
+			(*size)++;
+	
+	float *result = malloc(sizeof(*result) * (*size));
+
+	for(int i = 0, j = 0; i < n; ++i)
+		if(arr[i] >= min && arr[i] <= max)
+			result[j++] = arr[i];
+
+	return result;
+}
+
+int main(){
+	int n = 10;
+	float arr[] = {0.5, 0.7, 1.25, 6.25, 9.3, 1.13, 2.23, 3.2, 6.23, 1.78};
+	int value;
+	float *result = insert(arr, n, 1.13, 6.3, &value);
+
+	for(int i = 0; i < value; ++i)
+		printf("%f ", result[i]);
+	printf("\n");
+
+	free(arr);
+	return 0;
+}

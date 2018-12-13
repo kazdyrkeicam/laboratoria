@@ -1,0 +1,30 @@
+Napisz program w jêzyku C, który wczyta od u¿ytkownika nieujemn¹ liczbê ca³kowit¹ n,
+a nastêpnie dynamicznie zaalokuje pamiêæ dla n elementowej tablicy liczb rzeczywistych.
+Program powinien wype³niæ tablicê zerami, a nastêpnie wyœwietliæ wszystkie elementy tej tablicy.
+Na koniec program powinien zmieniæ rozmiar tablicy na 10 i wype³niæ j¹ jedynkami.
+
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef unsigned int uint
+
+
+void print_arr(float *arr, uint n){
+	for(uint i = 0; i < n; ++i)
+		printf("%f\n", arr[i]);
+}
+
+int main(){
+	uint n;
+	float *arr;
+
+	scanf("%u", &n);
+	arr = calloc(n, sizeof(*arr) * 10);
+
+	for(int i = 0; i < 10; ++i)
+		arr[i] = 1;
+	print_arr(arr, n);
+
+	free(arr);
+	return 0;
+}

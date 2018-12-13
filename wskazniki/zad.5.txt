@@ -1,0 +1,39 @@
+/*Napisz funkcjê w jêzyku C, która przyjmuje jako argumenty automatyczn¹ tablicê wartoœci ca³kowitych, jej rozmiar oraz wskaŸnik na zmienn¹ logiczn¹.
+Funkcja powinna posortowaæ tablicê w taki sposób, ¿e wartoœci nieparzyste znajd¹ siê w pocz¹tkowej czêœci tablicy, a parzyste w koñcowej.
+Kolejnoœæ wartoœci wewn¹trz tych grup jest dowolna.
+Funkcja powinna zwróciæ wskaŸnik na komórkê tablicy, w której pojawi siê pierwsza liczba parzysta.
+Zmiennej przekazanej przez wskaŸnik podany w argumencie, nale¿y przypisaæ prawdê,
+je¿eli funkcja dokona³a w tablicy jak¹kolwiek zmianê, a fa³sz w przeciwnym przypadku.
+W zadaniu wykorzystaj wskaŸnikowy sposób indeksowania tablicy. Dla u³atwienia za³ó¿my, ¿e w tablicy jest co najmniej jedna wartoœæ parzysta i nieparzysta./**/
+
+
+#include <stdio.h>
+#include <stdboo.h>
+
+void printArr(int *begin, int *end){
+	for(int *i = begin; i < end; ++i)
+		printf("%d ", i);
+}
+
+void swap(int *a, int *b){
+	*b ^= *a;
+	*a ^= *b;
+	*b ^= *a;
+}
+
+int *f(int arr[], int n, bool *changed){
+	int *even;
+	*changed = false;
+
+	do{
+		for(int i = 0; i < n; ++i){
+			if(*(arr + i) % 2 == 0 && *(arr + i + 1) % 2 == 1){
+				swap(arr + i, arr + i + 1);
+				*changed = true;
+				even = arr + i + 1;
+			}
+		}
+		n--;
+	}while(n > 0);
+	return even;
+}

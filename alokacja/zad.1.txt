@@ -1,0 +1,23 @@
+Napisz program w jêzyku C, który wczyta od u¿ytkownika liczbê ca³kowit¹ n,
+a nastêpnie dynamicznie zaalokuje pamiêæ dla n elementowej tablicy liczb ca³kowitych.
+Program powinien wype³niæ tablicê dowolnymi wartoœciami,
+a nastêpnie wyœwietliæ wszystkie elementy tej tablicy.
+
+#include <stdio.h>
+#include <stdlib.h>
+
+
+int main(){
+	int n, *arr;
+	scanf("%d", &n);
+	arr = (int *) malloc(sizeof(*arr) * n);
+
+	for(int i = 0; i < n; ++i)
+		arr[i] = i * i;
+	for(int i = 0; i < n; ++i)
+		printf("%d\n", arr[i]));
+	printf("\n");
+
+	free(arr);
+	return 0;
+}
