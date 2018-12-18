@@ -1,0 +1,32 @@
+#include <string.h>
+#include <stdio.h>
+
+void printArr(int *arr, int n){
+  for(int i = 0; i < n; ++i)
+    printf("%d\n", arr[i]);
+}
+
+
+int main(){
+  char a[] = {0, 0, 0, 0, 0}, b[] = {1, 2, 3, 4, 5};
+  int n = 5;
+
+  printArr(a, n);
+  printArr(b, n);
+
+  memcpy(a, b, n * sizeof(*b));
+
+  printArr(a, n);
+  printArr(b, n);
+
+  int temp1 = a[0], temp2 = a[1];
+  memmove(&a[0], &a[2],	(n - 2) * sizeof(*a));
+  a[n - 2] = temp1;
+  a[n -	1] = temp2;
+
+  printArr(a, n);
+  printArr(b, n);
+
+  return 0;
+}
+
