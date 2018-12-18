@@ -1,0 +1,16 @@
+#include <string.h>
+#include <stdio.h>
+
+
+int main(){
+  char str1[100] = {'\0'};
+  char tmp[10] = {'\0'};
+  char p[] = " - slowo uzytkownika.";
+
+  scanf("%99s",	str1);
+  strncpy(tmp, str1, sizeof(tmp) - 1);
+  strncat(tmp, p, sizeof(tmp) -	strlen(tmp) - 1);
+  tmp[sizeof(tmp) - 1] = '\0';
+
+  return 0;
+}
