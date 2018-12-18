@@ -1,0 +1,22 @@
+
+#include <string.h>
+#include <stdio.h>
+
+
+int main(){
+  char str1[100] = {'\0'};
+  char str2[100] = {'\0'};
+
+  fgets(str1, sizeof str1, stdin);
+  fgets(str2, sizeof str2, stdin);
+
+  int cmp = strcmp(str1, str2);
+  if(cmp < 0)
+    printf("%s\n", str1);
+  else if(cmp >	0)
+    printf("%s\n", str2);
+  else
+    printf("takie same");
+
+  return 0;
+}
