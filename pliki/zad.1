@@ -1,0 +1,34 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+
+void relapce(char mod[], char del[], char add[]){
+  char *pos;
+  int mod_len = strlen(mod), del_len = strlen(del), add_len = strlen(add), diff_len = add_len - del_len;
+  //int len = mod_len;
+  
+  pos = mod - 1;
+  
+  while(1){
+    pos = strstr(pos + 1, del);
+    if(!pos)  break;
+    mod_len += diff_len;
+    memmove(pos + add_len, pos + del_len, mod_len - (pos + add_len - mod));
+    memcpy(pos, add, add_len);
+    
+    pos += diff_len;
+  }
+  mod[mod_len] = '\0';
+  //mod[strlen(mod)] = '\0';
+}
+
+int main(){
+  char test[] = "ala ma kota i koguta.                 "; //Abort Trap to wina spacji (za malo)
+  
+  printf("%s\n", test);
+  
+  replace(test, "ko", "baa");
+  
+  printf("%s\n", test);
+  return 0;
+}
