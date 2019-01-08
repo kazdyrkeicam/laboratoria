@@ -1,0 +1,30 @@
+#include <stdio.h>
+#include <string.h>
+
+char *f(char *str){
+  char *pch, *word = strtok(str, " "), key[] = "aeiouy";
+  int max = 0;
+  char *current = word;
+  while(word != NULL){
+    pch = strpbrk(word, key);
+    int result = 0;
+    while(pch != 0){
+      result++;
+      if(result > max){
+        max = result;
+        current = word;
+      }
+      pch = strpbrk(pch + 1, key);
+    }
+    word = strtok(NULL, " ");
+  }
+  return current;
+}
+
+
+int main(){
+  char str[] = "ala ma kota.";
+  char *result = f(str);
+  printf("%s\n", result);
+  return 0;
+}
