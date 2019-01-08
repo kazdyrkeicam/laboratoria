@@ -1,0 +1,40 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+
+int count_words(char *str){
+  int n = 0;
+  char *pch = strtok(str, " ,.-");
+  while(pch != NULL){
+    n++;
+    pch = strtok(NULL, " ,.-");
+  }
+  return n;
+}
+
+
+char **f(char *str, int n){
+  char **result = malloc(sizeof(char *) * n);
+  int i = 0;
+  char *pch = strtok(str, " ,.-");
+  while(pch != NULL){
+    result[i++] = pch;
+    pch = strtok(NULL, " ,.-");
+  }
+  return result;
+}
+
+
+int main(){
+  char str[] = "To jakies przykladowe zdanie - do zadania.";
+  char *str_cpy = calloc(sizeof(str) + 1, 1);
+  strcpy(str_cpy, str);
+  int words = count_words(str_cpy);
+  char **result = f(str, words);
+  
+  for(int i = 0; i < words; ++i)
+    printf("%s\n", result[i]);
+  
+  return 0;
+}
