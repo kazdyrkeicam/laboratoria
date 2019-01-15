@@ -1,0 +1,14 @@
+#include <stdio.h>
+
+
+int main(){
+
+  if(remove("test") != 0){
+    perror("Blad");
+    return 1;
+  }
+  else
+    printf("usunieto");
+    
+  return 0;
+}
