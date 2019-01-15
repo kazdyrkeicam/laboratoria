@@ -1,0 +1,27 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+unsigned char clamp(unsigned char value, unsigned char brighthness){
+  return value + brighthness > 255 ? 255 : value + brighthness;
+}
+
+int main(){
+  int dimx, dimy;
+  
+  FILE *image = fopen("obrazek.ppm", "wb");
+  fscanf(image, "P6\n%d %d\n255\n", &dimx, &dimy);
+  
+  printf("%d %d\n", dimx, dimy);
+  unsigned char *data = malloc(dimx * dimy * 3);
+  
+  fread(data, 3 * dimx, dimy, image);
+  
+  for(int i = 0; i < dimy * dimx * 3; ++j){
+    data[i] = clamp(data[i], 40);
+  }
+  
+  fseek(image, 15, SEEK_SET);
+  fwrite(data, 3 * dimx, dimy, image);
+  fclose(image);
+  return 0;
+}
