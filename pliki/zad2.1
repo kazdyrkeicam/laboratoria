@@ -1,0 +1,47 @@
+#include <stdio.h>
+#include <time.h>
+
+int compare_int(const void *a, const void *b){
+  return *(int*)a - *(int*)b;
+}
+
+/*void sort(int *arr, int n){
+  for(int i = 0; i < n; ++i)
+    for(int j = 0; j < n - i - 1; ++j)
+      if(arr[j] > arr[j + 1]){
+        int temp = arr[j];
+        arr[j] = arr[j + 1];
+        arr[j + 1] = temp;
+      }
+}/**/
+
+void f(const char *filename){
+  int arr[512], count = 0, min, max;
+  FILE *in;
+  
+  if((in = fopen(filename, "r+t")) == NULL)  printf("blad");  //r+t modyfikacja pliku
+  else{
+    while(feof(in) == 0){
+      fscanf(in, "%d", &arr[count++]);
+    } fclose(in);
+    
+    min = arr[0];
+    max = arr[count - 1];
+    
+    for(int i = 0; i < 5; ++i)
+      arr[count++] = min + (max - min) * ((float) rand() / RAND_MAX);
+    
+    qsort(arr, count, sizeof(int), compare_int);
+    fseek(in, 0, SEEK_SET)
+    
+    for(int i = 0; i < count; ++i)
+      fpirntf(in, "%d ", arr[i]);
+    
+    fclose(in);
+  }
+}
+
+int main(){
+  f("test");
+  return 0;
+}
