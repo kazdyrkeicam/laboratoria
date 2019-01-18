@@ -1,0 +1,33 @@
+#include <stdio.h>
+
+typedef enum {CHAR, UCHAR, INT, FLOAT} Type;
+
+float avg(void *arr, int n, Type t){
+  float sum = 0;
+  
+  switch(t){
+    case CHAR: {
+      char *carr = (char *)arr;
+      for(int i = 0; i < n; ++i)  sum += carr[i];
+    }
+    case UCHAR: {
+      unsigned char *ucarr = arr;
+      for(int i = 0; i < n; ++i)  sum += ucarr[i];
+    }
+    case INT:{
+      int *iarr = arr;
+      for(int i = 0; i < n; ++i)  sum += iarr[i];
+    }
+    case FLOAT:{
+      float *farr = arr;
+      for(int i = 0; i < n; ++i)  sum += farr[i];
+    }
+  }
+  return sum / n;
+}
+
+int main(){
+  float arr[5] = {50, 100, 150, 200, 250};
+  printf("%f\n", avg(arr, 5, FLOAT);
+  return 0;
+}
