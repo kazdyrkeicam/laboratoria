@@ -1,0 +1,19 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef enum {LEFT, RIGHT, UP, DOWN} Direction;
+
+int main(){
+  Direction s;
+  scanf("%d", &s);
+  
+  switch(s){
+    case LEFT: printf("left"); break;
+    case RIGHT: printf("right"); break;
+    case UP: printf("up"); break;
+    case DOWN: printf("down"); break;
+    default: printf("Anywhere");
+  }
+  
+  return 0;
+}
