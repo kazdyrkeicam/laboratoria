@@ -1,0 +1,14 @@
+#include <stdio.h>
+
+
+int main(){
+  int a, b;
+  char buffer[128] = {0};
+  
+  scanf("%d%d", &a, &b);
+  int len = sprintf(buffer, "%dx - %d\n", a, b);
+  
+  printf("wyrazenie %s, dlugosc %d\n", buffer, len);
+   
+  return 0;
+}
