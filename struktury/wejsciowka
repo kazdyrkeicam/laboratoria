@@ -1,0 +1,14 @@
+#include <stdio.h>
+
+int main(){
+  FILE *out = NULL;
+  
+  if((out = fopen("abcd", "wb")) == NULL){
+    perror("error");
+  } else {
+    int arr[10] = {0};
+    fwrite(arr, sizeof(int), 10, out);
+  }
+  fclose(out);
+  return 0;
+}
