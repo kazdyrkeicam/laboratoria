@@ -1,0 +1,14 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(){
+  float x;
+  char buffer[] = "3*x - 5";
+  int a = 0, b = 0;
+  
+  scanf("%f", &x);
+  sscanf(buffer, "%d*x - %d", &a, &b);
+  printf("%f\n", a * x - b);
+  
+  return 0;
+}
