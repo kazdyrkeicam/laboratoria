@@ -1,0 +1,15 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef enum {R = 4, W = 2, X = 1} Direction;
+
+
+int main(){
+  int mod = R + X;
+  printf("%o\n", mod);
+  
+  if(mod & R) printf("readable"\n);
+  if(mod & W) printf("writable"\n);
+  if(mod & X) printf("executable"\n);
+  return 0;
+}
