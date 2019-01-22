@@ -1,0 +1,43 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+
+typedef struct{
+  float x, y, z;
+} Vector3D;
+
+void *add(Vector3D *v1, Vector3D *v2, Vector3D *temp){
+  if(memcmp(v1, v2, sizeof(Vector3D)) != 0){
+    temp->x = v1->x + v2->x;
+    temp->y = v1->y + v2->y;
+    temp->z = v1->z + v2->z;  
+  } else temp->x = temp->x = temp->x = 0;
+}
+
+void *sub(Vector3D *v1, Vector3D *v2, Vector3D *temp){
+  if(memcmp(v1, v2, sizeof(Vector3D)) != 0){
+    temp->x = v1->x - v2->x;
+    temp->y = v1->y - v2->y;
+    temp->z = v1->z - v2->z; 
+  } else temp->x = temp->x = temp->x = 0;
+}
+
+int main(){
+  Vector3D *v1 = malloc(sizeof(Vector3D)), *v2 = malloc(sizeof(Vector3D));
+  
+  v1->x = v1->y = v1->z = 2;
+  v2->x = v2->y = v2->z = 1;
+  
+  Vector3D **arr = malloc(2 * sizeof(Vector3D*));   //tablica wskaznikow
+  
+  for(int i = 0; i < 2; ++i)
+     arr[i] = malloc(sizeof(Vector3D));
+  
+  add(v1, v2, arr[0]);
+  printf("%f %f %f\n", arr[0]->x, arr[0]->y, arr[0]->z);
+  sub(v1, v2, arr[1]);
+  printf("%f %f %f\n", arr[1]->x, arr[1]->y, arr[1]->z);
+  
+  return 0;
+}
