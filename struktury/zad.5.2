@@ -1,0 +1,24 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+
+typedef struct{
+  int age;
+  int *name;
+} Person;
+
+int main(){
+  
+  Person p1;
+  p1.age = 16;
+  p1.name = malloc(20);
+  strcpy(p1.name, "Maciek");
+  
+  Person p2 = p1;
+  printf("P2 age: %d name: %s\n", p2.age, p2.name);
+  
+  free(p1.name);
+  printf("P2 age: %d name: %s\n", p2.age, p2.name);
+  return 0;
+}
