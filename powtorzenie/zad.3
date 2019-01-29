@@ -1,0 +1,39 @@
+#include <stdio.h>
+#include <string.h>
+
+void count_word(char *str){
+  int n = 0;
+  char *pch = strtok(str, " ,.-!?");  //zastepujesz null za te znaczki
+  while(pch != NULL){
+    n++;
+    pch = strtok(NULL, " ,.-!?");
+  }
+  return n;
+}
+
+
+int f(const char *filename){
+  char c;
+  int count = 0;
+  FILE *file = NULL;
+  if((in = fopen(filename, "rt")) == NULL){
+    perror("Blad");
+    return 0;
+  }
+  else {
+    fseek(in, 0, SEEK_END);
+    long file_size = ftell(in);
+    fseek(in, 0, SEEK_SET);
+    
+    char *buffer = malloc(file_size); // * sizeof(char) 
+    do{
+      c = fgetc(in);
+      buffer[count++] = c;
+    } while(c != EOF);
+    
+    fclose(in);
+    
+    return count_word(buffer);
+  }
+  return 0;
+}
