@@ -1,0 +1,21 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+typedef struct{
+  char name[25];
+  int age;
+  float h;
+} Person;
+
+int f_cmp(const void *p1, const void *p2){
+  return strcmp((*(Person*)p1).name, (*(Person*)p2).name);    //((Person*)p1)->name, ((Person*)p2)->name)
+}
+
+int main(){
+  Person arr[3] = {"Maciek", 16, 200.f, "Adam", 17, 180.f, "Eliza", 11, 111.f};
+  qsort(arr, 3, sizeof(Person), f_cmp);
+  for(int i = 0; i < 3; ++i)
+    printf("%s\n", arr[i].name);
+  return 0;
+}
