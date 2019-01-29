@@ -1,0 +1,22 @@
+/*SPRAWDZ
+  for(int i = 0; i < data_size; ++i)
+    *(char *)(new_node->data + i) = (char *)(new_data + i);
+/**/
+
+
+#include <stdio.h>
+
+typedef enum {ADDITION, SUBTRACTION, MULTIPLICATION, DIVISION, UNKNOW} Operations;
+
+Operations f(int a, int b, int result){
+  if(a + b == result) return ADDTION;
+  else if(a - b == result) return SUBTRACTION;
+  else if(a * b == result) return MULTIPLICATION;
+  else if(a / b == result) return DIVISION;
+  else return UNKNOW;
+}
+
+int main(){
+  printf("%d\n", f(2,2,4));
+  return 0;
+}
