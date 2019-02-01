@@ -1,1 +1,26 @@
+#include <stdio.h>
+#include <stdlib.h>
 
+
+int main(){
+  int x;
+  
+  File *fp = NULL;
+  if((fp = fopen("file", "rb")) == NULL){
+    perror("Blad");
+    return 1;
+  }
+  else{
+    fscanf(fp, "Ala ma %d kotow w nastepujacym wieku:\n", &x);
+    int *buff = malloc(x * sizeof(*buff));
+    
+    fread(buff, sizeof(int), x, fp);
+    fclose(fp);
+   
+    for(int i = 0; i < x; ++i)
+      printf("%d\n", buff[i]);
+    free(buff);
+  }
+  
+  return 0;
+}
