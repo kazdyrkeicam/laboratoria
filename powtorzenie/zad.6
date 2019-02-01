@@ -1,0 +1,25 @@
+#include <stdio.h>
+
+
+int main(){
+  float avg = 0.f;
+  int n = 0;
+  char buffer[25];
+  
+  FILE *in;
+  if((in = fopen("file", "rt")) == NULL){
+    perror("Blad");
+    return 1;
+  }
+  else{
+    while(feof(in) == 0){
+      float temp;
+      fscanf(in, "%s: "%.2f," , buffer, &temp);
+      avg += temp;
+      n++;
+    }
+    fclose(in);
+  }
+  printf("%f\n", avg / n);
+  return 0;
+}
