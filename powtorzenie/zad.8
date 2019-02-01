@@ -1,0 +1,25 @@
+#include <stdio.h>
+
+typedef struct{
+  unsigned char register_number;
+  char brand_name[10];
+} Car;
+
+void f(Car *arr; int n, const char *filename){
+  FILE *out;
+  if((out = fopen(filename, "wb")) == NULL){
+    printf("blad");
+    return;
+  }
+  else{
+    fwrite(arr, sizeof(Car), n, out);
+    fclose(out);
+  }
+}
+
+
+int main(){
+  Car arr[2] = {1, "Opel", 2, "Fiat"};
+  f(arr, 2, "auta.dat");
+  return 0;
+}
