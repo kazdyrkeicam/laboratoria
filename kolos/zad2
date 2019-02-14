@@ -1,0 +1,4 @@
+Zdefiniuj strukturę do reprezentacji liczb zespolonych. Napisz funkcję, która przyjmuje w argumentach dwie
+takie liczby i zwraca ich iloczyn. Napisz prosty program testowy, który działa na obiektach tej struktury
+tworzonych dynamicznie i wykorzystuje zdefiniowaną funkcję.
+
